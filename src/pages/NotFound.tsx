@@ -1,24 +1,24 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import Icon from "@/components/ui/icon";
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Упс! Страница не найдена</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Вернуться на главную
-        </a>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-amber-50 px-4">
+      <div className="text-center max-w-md">
+        <div className="flex justify-center mb-6">
+          <div className="bg-amber-100 p-4 rounded-full">
+            <Icon name="Search" className="h-12 w-12 text-amber-600" />
+          </div>
+        </div>
+        <h1 className="text-4xl font-bold mb-4 text-gray-800">Страница не найдена</h1>
+        <p className="text-lg text-gray-600 mb-8">
+          Запрашиваемая вами страница не существует или была перемещена.
+        </p>
+        <Button className="bg-amber-600 hover:bg-amber-700" asChild>
+          <Link to="/">Вернуться на главную</Link>
+        </Button>
       </div>
     </div>
   );
